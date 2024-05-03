@@ -268,12 +268,12 @@ const routes = [
   */
   {
     path: "/",
-    component: LayoutLanding,
+    component: LayoutBackend,
     children: [
       {
         path: "",
         name: "landing",
-        component: Landing,
+        component: BackendDashboard,
       },
     ],
   },
