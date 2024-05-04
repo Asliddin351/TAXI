@@ -255,11 +255,9 @@ onUnmounted(() => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <span class="d-none d-sm-inline-block ms-2"
-                    >Администратор</span
-                  >
+                  <span class="d-sm-inline-block ms-2">Roles</span>
                   <i
-                    class="fa fa-fw fa-angle-down d-none d-sm-inline-block opacity-50 ms-1 mt-1"
+                    class="fa fa-fw fa-angle-down d-sm-inline-block opacity-50 ms-1 mt-1"
                   ></i>
                 </button>
                 <div
