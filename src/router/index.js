@@ -9,6 +9,7 @@ import LayoutBackend from "@/layouts/variations/Backend.vue";
 import LayoutBackendBoxed from "@/layouts/variations/BackendBoxed.vue";
 import LayoutBackendMegaMenu from "@/layouts/variations/BackendMegaMenu.vue";
 import LayoutBackendSidebarMiniNav from "@/layouts/variations/BackendSidebarMiniNav.vue";
+import LandingView from "@/views/landing/LandingView.vue";
 
 // Frontend: Landing
 const Landing = () => import("@/views/landing/LandingView.vue");
@@ -257,6 +258,11 @@ const Error404 = () => import("@/views/errors/404View.vue");
 const Error500 = () => import("@/views/errors/500View.vue");
 const Error503 = () => import("@/views/errors/503View.vue");
 
+//admin views
+const PartnersView = () => import("@/views/admin/PartnersView.vue");
+const ProfileView = () => import("@/views/admin/ProfileView.vue");
+const MessagesView = () => import("@/views/admin/MessagesView.vue");
+const SettingsView = () => import("@/views/admin/SettingsView.vue");
 // Set all routes
 const routes = [
   /*
@@ -271,9 +277,41 @@ const routes = [
     component: LayoutBackend,
     children: [
       {
+        path: "admin",
+        children: [
+          {
+            path: "dashboard",
+            name: "landing",
+            component: BackendDashboard,
+          },
+          {
+            path: "partners",
+            component: PartnersView,
+          },
+          {
+            path: "profile",
+            component: ProfileView,
+          },
+          {
+            path: "messages",
+            component: MessagesView,
+          },
+          {
+            path: "settings",
+            component: SettingsView,
+          },
+        ],
+      },
+    ],
+  },
+
+  {
+    path: "/moderator",
+    component: LayoutBackend,
+    children: [
+      {
         path: "",
-        name: "landing",
-        component: BackendDashboard,
+        component: LandingView,
       },
     ],
   },
