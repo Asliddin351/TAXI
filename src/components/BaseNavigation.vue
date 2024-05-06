@@ -105,11 +105,48 @@ function linkClicked(e, submenu) {
     }
   }
 }
+
+const routerLinks = [
+  {
+    id: Math.random(Date.now()),
+    name: "Админ панель",
+    link: "/admin/dashboard",
+  },
+
+  {
+    id: Math.random(Date.now()),
+    name: "Рекламные компании",
+    link: "/admin/partners",
+  },
+
+  {
+    id: Math.random(Date.now()),
+    name: "Профиль",
+    link: "/admin/profile",
+  },
+
+  {
+    id: Math.random(Date.now()),
+    name: "Сообщения",
+    link: "/admin/messages",
+  },
+
+  {
+    id: Math.random(Date.now()),
+    name: "Настройки",
+    link: "/admin/settings",
+  },
+];
 </script>
 
 <template>
-  <ul :class="classContainer">
-    <li
+  <ul class="list">
+    <li v-for="item in routerLinks" :key="item.id">
+      <RouterLink class="nav_link" :to="item.link" active-class="active-link">{{
+        item.name
+      }}</RouterLink>
+    </li>
+    <!-- <li
       v-for="(node, index) in nodes"
       :key="`node-${index}`"
       :class="{
@@ -120,11 +157,11 @@ function linkClicked(e, submenu) {
             ? subIsActive(node.subActivePaths)
             : false,
       }"
-    >
-      <!-- Heading -->
-      {{ node.heading ? node.name : "" }}
-      <!-- Normal Link -->
-      <div v-if="!node.heading && !node.sub" @click="linkClicked($event)">
+    > -->
+    <!-- Heading -->
+    <!-- {{ node.heading ? node.name : "" }} -->
+    <!-- Normal Link -->
+    <!-- <div v-if="!node.heading && !node.sub" @click="linkClicked($event)">
         <RouterLink
           v-if="
             !node.to.startsWith('http://') && !node.to.startsWith('https://')
@@ -169,11 +206,11 @@ function linkClicked(e, submenu) {
             >{{ node.badge }}</span
           >
         </a>
-      </div>
-      <!-- END Normal Link -->
+      </div> -->
+    <!-- END Normal Link -->
 
-      <!-- Submenu Link -->
-      <a
+    <!-- Submenu Link -->
+    <!-- <a
         v-else-if="!node.heading && node.sub"
         href="#"
         class="nav-main-link nav-main-link-submenu"
@@ -189,15 +226,42 @@ function linkClicked(e, submenu) {
           "
           >{{ node.badge }}</span
         >
-      </a>
-      <!-- END Submenu Link -->
+      </a> -->
+    <!-- END Submenu Link -->
 
-      <BaseNavigation
+    <!-- <BaseNavigation
         v-if="node.sub"
         :nodes="node.sub"
         sub-menu
         :disable-click="props.horizontal && props.horizontalHover"
-      />
-    </li>
+      /> -->
+    <!-- </li> -->
   </ul>
 </template>
+
+<style lang="scss">
+.list {
+  list-style: none;
+  margin-inline: -20px;
+}
+.nav_link {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 18px;
+  padding-inline: 20px;
+  color: white;
+  &:hover {
+    color: white;
+  }
+}
+.active-link {
+  color: black;
+  background-color: #ebeef2;
+  &:hover {
+    color: black !important;
+  }
+}
+</style>

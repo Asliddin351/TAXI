@@ -1,6 +1,6 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
-import { useRouter } from "vue-router";
+import { ref, computed } from "vue";
+import { useRouter, useRoute } from "vue-router";
 import { useTemplateStore } from "@/stores/template";
 
 // Grab example data
@@ -9,32 +9,56 @@ import notifications from "@/data/notifications";
 // Main store and Router
 const store = useTemplateStore();
 const router = useRouter();
+const { path } = useRoute();
+
+// let role = ref(path);
+
+// let role = computed(() => {
+//   switch (path) {
+//     case path.includes("admin"):
+//       return "Администратор";
+//       break;
+//     case path.includes("moderator"):
+//       return "Модератор";
+//       break;
+//     case path.includes("client"):
+//       return "Клиент";
+//       break;
+//     case path.includes("partner"):
+//       return "Партнёр";
+//       break;
+//   }
+// });
+
+const handleChangeRole = (r) => {
+  router.push(`/${r}`);
+};
 
 // Reactive variables
-const baseSearchTerm = ref("");
+// const baseSearchTerm = ref("");
 
-// On form search submit functionality
-function onSubmitSearch() {
-  router.push("/backend/pages/generic/search?" + baseSearchTerm.value);
-}
+// // On form search submit functionality
+// function onSubmitSearch() {
+//   router.push("/backend/pages/generic/search?" + baseSearchTerm.value);
+// }
 
 // When ESCAPE key is hit close the header search section
-function eventHeaderSearch(event) {
-  if (event.which === 27) {
-    event.preventDefault();
-    store.headerSearch({ mode: "off" });
-  }
-}
+// function eventHeaderSearch(event) {
+//   if (event.which === 27) {
+//     event.preventDefault();
+//     store.headerSearch({ mode: "off" });
+//   }
+// }
 
 // Attach ESCAPE key event listener
-onMounted(() => {
-  document.addEventListener("keydown", eventHeaderSearch);
-});
+// onMounted(() => {
+//   document.addEventListener("keydown", eventHeaderSearch);
+// });
 
-// Remove keydown event listener
-onUnmounted(() => {
-  document.removeEventListener("keydown", eventHeaderSearch);
-});
+// // Remove keydown event listener
+// onUnmounted(() => {
+//   document.removeEventListener("keydown", eventHeaderSearch);
+// });
 </script>
 
 <template>
@@ -255,7 +279,7 @@ onUnmounted(() => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <span class="d-sm-inline-block ms-2">Roles</span>
+                  <span class="d-sm-inline-block ms-2">Role</span>
                   <i
                     class="fa fa-fw fa-angle-down d-sm-inline-block opacity-50 ms-1 mt-1"
                   ></i>
@@ -265,30 +289,30 @@ onUnmounted(() => {
                   aria-labelledby="page-header-user-dropdown"
                 >
                   <div class="p-2">
-                    <a
+                    <RouterLink
                       class="dropdown-item d-flex align-items-center justify-content-between"
-                      href="javascript:void(0)"
+                      to="/admin/dashboard"
                     >
                       <span class="fs-sm fw-medium">Администратор</span>
-                    </a>
-                    <a
-                      href="javascript:void(0)"
+                    </RouterLink>
+                    <button
+                      @click="handleChangeRole('moderator')"
                       class="dropdown-item d-flex align-items-center justify-content-between"
                     >
                       <span class="fs-sm fw-medium">Модератор</span>
-                    </a>
-                    <a
+                    </button>
+                    <button
                       class="dropdown-item d-flex align-items-center justify-content-between"
-                      href="javascript:void(0)"
+                      @click="handleChangeRole('client')"
                     >
                       <span class="fs-sm fw-medium">Клиент</span>
-                    </a>
-                    <a
+                    </button>
+                    <button
                       class="dropdown-item d-flex align-items-center justify-content-between"
-                      href="javascript:void(0)"
+                      @click="handleChangeRole('partner')"
                     >
                       <span class="fs-sm fw-medium">Партнёр</span>
-                    </a>
+                    </button>
                     <a
                       class="dropdown-item d-flex align-items-center justify-content-between"
                       href="javascript:void(0)"
