@@ -10,6 +10,7 @@ import LayoutBackendBoxed from "@/layouts/variations/BackendBoxed.vue";
 import LayoutBackendMegaMenu from "@/layouts/variations/BackendMegaMenu.vue";
 import LayoutBackendSidebarMiniNav from "@/layouts/variations/BackendSidebarMiniNav.vue";
 import LandingView from "@/views/landing/LandingView.vue";
+import BaseLayout from "@/layouts/BaseLayout.vue";
 
 // Frontend: Landing
 const Landing = () => import("@/views/landing/LandingView.vue");
@@ -307,7 +308,7 @@ const routes = [
 
   {
     path: "/moderator",
-    component: LayoutBackend,
+    component: BaseLayout,
     children: [
       {
         path: "",
