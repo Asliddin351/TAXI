@@ -92,7 +92,7 @@ const handleChangeRole = (r) => {
               <!-- END Open Search Section -->
 
               <!-- Search Form (visible on larger screens) -->
-              <form
+              <!-- <form
                 class="d-none d-md-inline-block"
                 @submit.prevent="onSubmitSearch"
               >
@@ -109,7 +109,7 @@ const handleChangeRole = (r) => {
                     <i class="fa fa-fw fa-search"></i>
                   </span>
                 </div>
-              </form>
+              </form> -->
               <!-- END Search Form -->
             </slot>
           </div>

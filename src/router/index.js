@@ -259,8 +259,8 @@ const Error500 = () => import("@/views/errors/500View.vue");
 const Error503 = () => import("@/views/errors/503View.vue");
 
 //admin views
-const PartnersView = () => import("@/views/admin/PartnersView.vue");
-const ProfileView = () => import("@/views/admin/ProfileView.vue");
+const AdsView = () => import("@/views/admin/AdsView.vue");
+const EqView = () => import("@/views/admin/EqView.vue");
 const MessagesView = () => import("@/views/admin/MessagesView.vue");
 const SettingsView = () => import("@/views/admin/SettingsView.vue");
 // Set all routes
@@ -285,12 +285,12 @@ const routes = [
             component: BackendDashboard,
           },
           {
-            path: "partners",
-            component: PartnersView,
+            path: "ads",
+            component: AdsView,
           },
           {
-            path: "profile",
-            component: ProfileView,
+            path: "eq",
+            component: EqView,
           },
           {
             path: "messages",

@@ -115,25 +115,45 @@ const routerLinks = [
 
   {
     id: Math.random(Date.now()),
-    name: "Рекламные компании",
-    link: "/admin/partners",
+    name: "Список реклам",
+    link: "/admin/ads",
   },
 
   {
     id: Math.random(Date.now()),
-    name: "Профиль",
-    link: "/admin/profile",
+    name: "Список рабочего оборудования",
+    link: "/admin/eq",
   },
 
   {
     id: Math.random(Date.now()),
-    name: "Сообщения",
+    name: "Список нерабочего оборудования",
     link: "/admin/messages",
   },
 
   {
     id: Math.random(Date.now()),
-    name: "Настройки",
+    name: "Клиенты",
+    link: "/admin/settings",
+  },
+  {
+    id: Math.random(Date.now()),
+    name: "Список системных ошибок",
+    link: "/admin/settings",
+  },
+  {
+    id: Math.random(Date.now()),
+    name: "Изменение настроек оборудования",
+    link: "/admin/settings",
+  },
+  {
+    id: Math.random(Date.now()),
+    name: "Контроль пользователей",
+    link: "/admin/settings",
+  },
+  {
+    id: Math.random(Date.now()),
+    name: "Финансы и документы",
     link: "/admin/settings",
   },
 ];
@@ -247,12 +267,13 @@ const routerLinks = [
 .nav_link {
   display: flex;
   width: 100%;
-  height: 50px;
+  height: 60px;
   justify-content: flex-start;
   align-items: center;
   font-size: 18px;
   padding-inline: 20px;
   color: white;
+  line-height: 20px;
   &:hover {
     color: white;
   }
